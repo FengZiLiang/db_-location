@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.td.aiot.location.dao.FloorMapper">
+    <resultMap id="BaseResultMap" type="cn.td.aiot.location.domain.Floor">
+        <id column="floor_id" property="floorId"/>
+        <result column="floor_name" property="floorName"/>
+        <result column="floor_info" property="floorInfo"/>
+        <result column="build_id" property="buildId"/>
+    </resultMap>
+
+    <delete id="deleteFloorAndMap" parameterType="integer">
+        DELETE et_location.t_floor, et_location.t_map
+        FROM t_floor
+             LEFT JOIN t_map ON t_floor.floor_id = t_map.floor_id
+        WHERE t_floor.floor_id = #{floorId}
+    </delete>
+</mapper>

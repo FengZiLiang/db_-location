@@ -1,0 +1,48 @@
+# 切换环境
+spring:
+  profiles:
+    active: prod
+# 配置服务器端口号
+server:
+  port: 9527
+
+# 配置rsa密钥
+td:
+  rsa:
+    public-key-base64: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqf21NybzZuALEIT5KMQq/r14+rx4sOvsPIh62G5t09abGxt0YDaLVvnSX0nvfptL+6n01nomPofpyATYD223YfLk0wNO2F7N1SquSkX8iwtcgSmLxR8506uhe5MZoWoyKo/hf/SQMPhwhNanlvJKnC6idwMWRNRBzddWRWE+zB0Qp0ndnJtA7H1eNJJ0r2uwT5LF9DWT7zTdxpNRiZruc4NzKYCZRmLyIxKYIqOju7+X71humyoQkmcSgfhv6KKjCel40zLNnwEW9fGz2tBggIKhmRuxVBY0qJLhdcVgKjPRJxzeTdy4yc956jL6sZ9iMAw2TOfl+mWLV5/it/QcDwIDAQAB
+    private-key-base64: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCp/bU3JvNm4AsQhPkoxCr+vXj6vHiw6+w8iHrYbm3T1psbG3RgNotW+dJfSe9+m0v7qfTWeiY+h+nIBNgPbbdh8uTTA07YXs3VKq5KRfyLC1yBKYvFHznTq6F7kxmhajIqj+F/9JAw+HCE1qeW8kqcLqJ3AxZE1EHN11ZFYT7MHRCnSd2cm0DsfV40knSva7BPksX0NZPvNN3Gk1GJmu5zg3MpgJlGYvIjEpgio6O7v5fvWG6bKhCSZxKB+G/ooqMJ6XjTMs2fARb18bPa0GCAgqGZG7FUFjSokuF1xWAqM9EnHN5N3LjJz3nqMvqxn2IwDDZM5+X6ZYtXn+K39BwPAgMBAAECggEAUKL5A2CGtZYxqXRqfNwRSSW37bjZx5MiTNSw8Vnw3zw9923eloVJM8jt8iWwZe5k7MyCR/tJiQAP9cHWe/sfsmb2BOLc0+ak3SmR48mvMoYBK4P5uVhGphIUV/o/fkJR6b62yWvJunEfbuQkO4ZTviKhDrN4LM5DKNGtKtwmXcvltq96Y1gitZhOL/pPUJVngRuz3C1cdN7SgHfELQ749S2t/TKgMxAU5xRRKdaA4BDJCwb0E4NH14v3uePXHAJEKMWBQuGhW0u8zqgfG+6vg08jF+GKbH2zVN2i++jrPT1T9rqbVCmZ1j18/mbtfwzBGVJ1WqX1Q+gvcZX7A0vdAQKBgQDZQ31CNIPQsWPcmc+LvBhkgB6NswVmCWoZtJxRtb6Dk2GCieqEBZh7E7DPYMqhzuDvMMo1EM1s3FFpQuT12UQxLVLrN1sWSbawn+u8INSNGy3E5cLti+aXGei2HrcITphVes1+/4WQz+f8yY9xIyfhMHwaEcG1fHtV3zjWBZVpVwKBgQDITJFO9ygfFqUA8YSYfX9eEhh6MvLXlGgFS3UM9p5PsyZDAzAgRg8LObstkKPScHq2vq/2IKI+kOX4xzcslt4dLx5xFKNf34aLiX+6S5dVjajefMMSdLfaAv8WLj7m5KC+TsaX+Ib/7IljmdI2Xq/k0Y0XP4kjXetd+Gx6xH7YCQKBgQC2iMozFlXsvyysSZmix8wim7WPzWlqudwnbqOqzqwadXeGKgMbGmxqczeoc6Sq31oB+5bXkJ9Wp5/KdQZSO1DclDzHHAHuLs5LhICU1WxehQgmFfd4hoKcTotCf3m9g/LeVkdSPLHl4ZcBvgJCxouZ2Zdae7KonMYudlWVEqneDwKBgDCSyOZCb7tiTW92InascHfKoZ74vgVjmvo1u1QCdo/TXSMBIemhs8JAJNE+80t0NX4driRc85uCnhJ/lTS9/W1MYPCBVcFJPqKWHKB79l4r9VjHHrNaFL/M3Dlvy5dIuGaOSgDOp0ZnAUZjJiRDQBqYasPJh6NJAmwOc5guEKipAoGBAJowJYPrBszHz0j8xf008FohSk4zdrdupUBWwd24QZcNdf6vLQ8AESujzromZaDUmLJvHhkuJQhzzISganKR0MRLDs24yHlhE1EpVi8pZEvLBviyUXKh4ouc5nnkTU4Jj7jU0RqzVcy1mmzUHLs19xhM3tKPYXRyj1L5wc5juBeG
+
+#mybatis plus 设置
+mybatis-plus:
+  type-aliases-package: cn.td.aiot.system.domain,cn.td.aiot.job.domain,cn.td.aiot.location.domain,cn.td.aiot.decoder.domain
+  mapper-locations: classpath:mapper/*/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    # 关闭 mybatis-plus的 banner
+    banner: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['httptrace', 'metrics']
+
+tidu:
+  # 是否异步记录用户操作日志
+  openAopLog: true
+  # 单次最大批量入库数量
+  max:
+    batch:
+      insert:
+        num: 1000
+  shiro:
+    # 后端免认证接口 url 上线删除 map/**路径/decoder/**,
+    anonUrl: /login,/logout/**,/regist,/user/check/**,/swagger-resources/**,/webjars/**,/v2/**,/swagger-ui.html/**,/favicon.ico,/images/captcha/*,/websocket/location/**
+    # token有效期，单位秒
+    jwtTimeOut: 360000
+  ###CLE Location配置
+  location:
+    serverName: 192.168.1.109
+    serverCommPort: 3334
+    serverDataPort: 3335

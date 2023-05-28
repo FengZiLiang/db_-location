@@ -1,0 +1,105 @@
+# 开发环境
+spring:
+  datasource:
+    dynamic:
+      # 是否开启 SQL日志输出，生产环境建议关闭，有性能损耗
+      p6spy: true
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1
+        pool-name: TDHikariCP
+  #primary: base
+  #      datasource:
+  #        # 摄像头库
+  #        decoder:
+  #          username: root
+  #          password: thinker
+  #          driver-class-name: com.mysql.cj.jdbc.Driver
+  #          url: jdbc:mysql://121.37.142.234:3306/et_decoder?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&rewriteBatchedStatements=true
+  #        # 基础库
+  #        base:
+  #          username: root
+  #          password: thinker
+  #          driver-class-name: com.mysql.cj.jdbc.Driver
+  #          url: jdbc:mysql://121.37.142.234:3306/et_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&rewriteBatchedStatements=true
+  #        # 任务调度
+  #        quartz:
+  #          username: root
+  #          password: thinker
+  #          driver-class-name: com.mysql.cj.jdbc.Driver
+  #          url: jdbc:mysql://121.37.142.234:3306/et_quartz?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+  #        # 定位库
+  #        location:
+  #          username: root
+  #          password: thinker
+  #          driver-class-name: com.mysql.cj.jdbc.Driver
+  #          url: jdbc:mysql://121.
+      primary: base
+      datasource:
+        #摄像头数据库
+        decoder:
+          username: root
+          password: 12345678
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/et_decoder?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+        # 基础库
+        base:
+          username: root
+          password: 12345678
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/et_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+        # 任务调度
+        quartz:
+          username: root
+          password: 12345678
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/et_quartz?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+        # 定位库
+        location:
+          username: root
+          password: 12345678
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/et_location?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+  aop:
+    proxy-target-class: true
+
+  messages:
+    encoding: utf-8
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 10000
+    timeout: 0
+
+td:
+  decoder:
+    loadffmpeg:
+      #是否开启debug模式
+      debug: true
+      #默认命令行执行根路径
+      path: C://Users//L7690//Documents//Development0//tool//ffmpegwin64//bin//
+      #任务池大小
+      size: 11
+      #是否开启保活
+      keepalive: true
+
+###CLE Location配置
+tidu:
+  location:
+    serverName: 192.168.1.109
+    serverCommPort: 3334
+    serverDataPort: 3335

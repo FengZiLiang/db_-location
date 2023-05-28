@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<req type="rf cfg">
+    <rf chan="2" prf="64" rate="6810" code="9" plen="128" pac="8" nsfd="0"/>
+</req>

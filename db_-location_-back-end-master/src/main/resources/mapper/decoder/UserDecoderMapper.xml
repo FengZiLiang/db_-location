@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.td.aiot.decoder.dao.UserDecoderMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.td.aiot.decoder.domain.UserDecoder">
+        <id column="id" property="id"/>
+        <result column="decoder_id" property="decoderId"/>
+        <result column="user_id" property="userId"/>
+        <result column="protocol" property="protocol"/>
+        <result column="name" property="name"/>
+        <result column="status" property="status"/>
+        <result column="model" property="model"/>
+    </resultMap>
+    <update id="updateByUserIdAndDecoderId" parameterType="cn.td.aiot.decoder.domain.UserDecoder">
+UPDATE `et_decoder`.`t_user_decoder`
+SET `protocol` = #{protocol},
+`name` = #{name},
+`status` = #{status},
+`model` = #{model}
+WHERE
+	`decoder_id` =#{decoderId}
+	AND
+	`user_id` = #{userId};
+	</update>
+
+    <select id="findAllByUserId" resultType="cn.td.aiot.decoder.domain.UserDecoder">
+        SELECT `id`, `decoder_id`,`user_id`,protocol,`name`,`status`, `model` FROM t_user_decoder WHERE user_id = #{userId}  AND `status` !=0  </select>
+    <select id="findAllByDecoderId" resultType="cn.td.aiot.decoder.domain.UserDecoder">
+                SELECT `id`, `decoder_id`,`user_id`,protocol,`name`,`status`, `model` FROM t_user_decoder WHERE decoder_id = #{decoderId} AND `status` !=0
+    </select>
+    <select id="findAllByUserIdAndDecoderId" resultType="cn.td.aiot.decoder.domain.UserDecoder">
+       SELECT `id`, `decoder_id`,`user_id`,protocol,`name`,`status`, `model` FROM t_user_decoder WHERE decoder_id = #{decoderId} AND user_id = #{userId} AND `status` !=0
+
+    </select>
+
+
+</mapper>

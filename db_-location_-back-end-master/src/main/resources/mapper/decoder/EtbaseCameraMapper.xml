@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.td.aiot.decoder.dao.EtbaseCameraMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.td.aiot.decoder.domain.EtbaseCamera">
+        <id column="decoder_id" property="decoderId"/>
+        <result column="camera_status" property="cameraStatus"/>
+        <result column="model" property="model"/>
+        <result column="mac" property="mac"/>
+        <result column="index_x" property="indexX"/>
+        <result column="index_y" property="indexY"/>
+        <result column="index_z" property="indexZ"/>
+        <result column="map_id" property="mapId"/>
+        <result column="ip" property="ip"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="port" property="port"/>
+    </resultMap>
+    <resultMap id="EtbaseCameraAndUser" type="cn.td.aiot.decoder.vo.CameraVo">
+        <result column="decoder_id" property="decoderId"/>
+        <result column="user_id" property="userId"/>
+        <result column="protocol" property="protocol"/>
+        <result column="name" property="name"/>
+        <result column="status" property="status"/>
+        <result column="model" property="model"/>
+        <association property="cameraInfo" resultMap="BaseResultMap" javaType="cn.td.aiot.decoder.domain.EtbaseCamera"/>
+    </resultMap>
+    <select id="findAllByMapId" resultMap="EtbaseCameraAndUser">
+SELECT
+	t_user_decoder.decoder_id,
+	t_user_decoder.user_id,
+	t_user_decoder.protocol,
+	t_user_decoder.`name`,
+	t_user_decoder.`status`,
+	t_user_decoder.`model`,
+	t_etbase_camera.`camera_status`,
+	t_etbase_camera.`mac`,
+	t_etbase_camera.`index_x`,
+	t_etbase_camera.`index_y`,
+	t_etbase_camera.`index_z`,
+	t_etbase_camera.`map_id`,
+	t_etbase_camera.`user_name`,
+	t_etbase_camera.`password`,
+	t_etbase_camera.`port`,
+	t_etbase_camera.`ip`
+FROM
+	t_user_decoder
+	LEFT JOIN t_etbase_camera ON t_user_decoder.decoder_id = t_etbase_camera.decoder_id
+WHERE
+	t_user_decoder.user_id = #{userId}
+	AND t_etbase_camera.map_id = #{mapId}
+	AND t_user_decoder.`status` !=0
+
+    </select>
+    <select id="findCameraByMac" resultMap="EtbaseCameraAndUser">
+SELECT
+	t_user_decoder.decoder_id,
+	t_user_decoder.user_id,
+	t_user_decoder.protocol,
+	t_user_decoder.`name`,
+	t_user_decoder.`status`,
+	t_user_decoder.`model`,
+	t_etbase_camera.`camera_status`,
+	t_etbase_camera.`mac`,
+	t_etbase_camera.`index_x`,
+	t_etbase_camera.`index_y`,
+	t_etbase_camera.`index_z`,
+	t_etbase_camera.`map_id`,
+	t_etbase_camera.`user_name`,
+	t_etbase_camera.`password`,
+	t_etbase_camera.`port`,
+	t_etbase_camera.`ip`
+FROM
+	t_user_decoder
+	LEFT JOIN t_etbase_camera ON t_user_decoder.decoder_id = t_etbase_camera.decoder_id
+WHERE
+	t_etbase_camera.mac = #{mac}
+	AND t_user_decoder.`status` !=0
+    </select>
+
+
+</mapper>

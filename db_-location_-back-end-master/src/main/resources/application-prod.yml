@@ -1,0 +1,75 @@
+# 生产环境
+spring:
+  datasource:
+    dynamic:
+      # 是否开启 SQL日志输出，生产环境建议关闭，有性能损耗
+      p6spy: false
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 25
+        min-idle: 10
+        connection-test-query: select 1
+        pool-name: TDHikariCP
+      # 配置默认数据源
+      primary: base
+      datasource:
+        # 摄像头库
+        decoder:
+          username: root
+          password: thinker
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://121.37.142.234:3306/et_decoder?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&rewriteBatchedStatements=true
+        # 基础库
+        base:
+          username: root
+          password: thinker
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://121.37.142.234:3306/et_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&rewriteBatchedStatements=true
+#        # 任务调度
+#        quartz:
+#          username: root
+#          password: thinker
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://121.37.142.234:3306/et_quartz?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+        # 定位库
+        location:
+          username: root
+          password: thinker
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://121.37.142.234:3306/et_location?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&rewriteBatchedStatements=true
+  aop:
+    proxy-target-class: true
+
+  messages:
+    encoding: utf-8
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  redis:
+    host: 121.37.142.234
+    port: 6379
+    password: thinker
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 10000
+    timeout: 0
+
+td:
+  decoder:
+    loadffmpeg:
+      #是否开启debug模式
+      debug: false
+      #默认命令行执行根路径
+      path: //usr//bin//
+      #任务池大小
+      size: 11
+      #是否开启保活
+      keepalive: true
+      #存活时间以毫秒为单位
+      keeptime: 600000

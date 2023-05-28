@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<req type="anchor cfg">
+    <anchor addr="1aa6083cf820e02" id="16" x="0" y="7.31" z="0" master="1" master_addr="1aa6083cf820f12" master_lag_delay="2000" ant_delay_rx="16492" ant_delay_tx="16492" dimension="2"/>
+    <anchor addr="1aa6083cf820ba3" id="17" x="0" y="0" z="0" master="0" master_addr="0" master_lag_delay="0" ant_delay_rx="16492" ant_delay_tx="16492" dimension="2">
+        <masteranchor addr="1aa6083cf820e02" rfdistance="7.3072"/>
+    </anchor>
+    <anchor addr="1aa6083cf820a8b" id="19" x="5.14" y="0" z="0" master="0" master_addr="0" master_lag_delay="0" ant_delay_rx="16492" ant_delay_tx="16492" dimension="2">
+        <masteranchor addr="1aa6083cf820e02" rfdistance="8.9479"/>
+    </anchor>
+    <anchor addr="1aa6083cf820b38" id="18" x="5.14" y="8.47" z="0" master="0" master_addr="0" master_lag_delay="0" ant_delay_rx="16492" ant_delay_tx="16492" dimension="2">
+        <masteranchor addr="1aa6083cf820e02" rfdistance="5.2267"/>
+    </anchor>
+</req>

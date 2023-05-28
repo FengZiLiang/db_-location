@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<req type="range test" num_ranges="200">
+    <anchor addr="1aa6083cf820e02"/>
+    <anchor addr="1aa6083cf820b35"/>
+</req>

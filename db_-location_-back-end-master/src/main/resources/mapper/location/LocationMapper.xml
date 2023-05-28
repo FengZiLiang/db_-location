@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.td.aiot.location.dao.LocationMapper">
+    <resultMap id="BaseResultMap" type="cn.td.aiot.location.domain.Location">
+        <id column="BaseResultMap" property="userId"/>
+        <result column="location_x" property="locationX"/>
+        <result column="location_y" property="locationY"/>
+        <result column="location_z" property="locationZ"/>
+        <result column="map_id" property="mapId"/>
+        <result column="location_time" property="locationTime"/>
+    </resultMap>
+
+</mapper>
